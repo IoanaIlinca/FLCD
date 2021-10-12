@@ -1,0 +1,24 @@
+<!-- Check if a number is prime -->
+
+**
+	write("Enter a number:\n")
+	read(number)
+	check = true
+	for (index in (2, number/2), 1)
+	**
+		if (number % index === 0)
+		**
+			check = false
+			break
+		**
+	**
+	if (check === true)
+	**
+		write("The number is prime")
+	**
+	else
+	**
+		write("The number is not prime")
+	**
+
+**

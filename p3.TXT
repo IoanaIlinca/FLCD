@@ -1,0 +1,18 @@
+<!-- The sum of  n numbers -->
+
+
+
+**
+	write("Enter the number of numbers:\n")
+	read(number)
+	sum = 0
+	for (index in (0, number - 1), 1)
+	**
+		write("Enter the current number")
+		read(current)
+		sum += current
+	**
+	
+	write(sum)
+
+**

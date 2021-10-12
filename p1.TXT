@@ -1,0 +1,20 @@
+<!-- The maximum of  3 numbers -->
+
+**
+	read(numberOne)
+	read(numberTwo)
+	read(numberThree)
+	if (numberOne > numberTwo && numberOne > numberThree)  
+		**
+			write(numberOne)
+		**
+	elif (numberThree > numberTwo && numberThree > numberOne)  
+		**
+			write(numberThree)
+		**
+	else
+		**
+			write(numberTwo)
+		**
+
+**

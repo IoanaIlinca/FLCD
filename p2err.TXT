@@ -1,0 +1,27 @@
+<!-- Check if a number is prime -->
+
+**
+	write('Enter a number:\n') <!-- '' does not support more than one character -->
+	read(number)
+	check = true
+	for (index in (2, number/2), 1)
+	**
+		if (number % index === 0)
+		**
+			check = false
+			break
+		**
+	# <!-- # does not exist, variables contain only alphaNumeric characters and _ -->
+
+
+	if (check === true)
+	**
+		write("The number is prime")
+	**
+	else
+	**
+		write("The number is not prime"); <!-- ; does not exist -->
+	**
+
+**
+<-- This is reversed, it is not a comment --!>
