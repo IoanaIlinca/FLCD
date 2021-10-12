@@ -25,10 +25,9 @@ class SymbolTable:
                 while element[1] != -1:
                     lastElement = element
                     element = self.__hashTable[element[1]]
-                    if (initialValue in self.__hashTable[lastElement]):
+                    if (initialValue in self.__hashTable[lastElement[1]]):
                         return (lastElement, initialValue)
 
-                print(self.__hashTable[lastElement[1]])
                 self.__hashTable[lastElement[1]][1] = self.__firstEmpty
                 self.__hashTable[self.__firstEmpty] = [initialValue, -1]
                 sum = self.__firstEmpty
