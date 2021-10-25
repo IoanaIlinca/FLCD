@@ -3,6 +3,7 @@ from SymbolTable import SymbolTable
 import re
 import copy
 
+
 pif = []
 st = SymbolTable()
 
@@ -106,6 +107,10 @@ for fileName in files:
             identifiersAndConstants = identifiersAndConstants.replace(
                 token, " ")
 
+        for token in identifiersAndConstants:
+            reservedWordsSeparataorsOperatorsInLine = reservedWordsSeparataorsOperatorsInLine.replace(
+                token, " ")
+
         identifiersAndConstants = identifiersAndConstants.split()
         errors = []
         copyIdentifiersAndConstants = copy.deepcopy(identifiersAndConstants)
@@ -124,10 +129,6 @@ for fileName in files:
                 if result:
                     errors.append(token)
                     identifiersAndConstants.remove(token)
-
-        for token in identifiersAndConstants:
-            reservedWordsSeparataorsOperatorsInLine = reservedWordsSeparataorsOperatorsInLine.replace(
-                token, " ")
 
         for token in reservedWords:
             if token not in ["if", "for"]:
@@ -153,12 +154,6 @@ for fileName in files:
                 token = list(token)
                 reservedWordsSeparataorsOperatorsInLine = reservedWordsSeparataorsOperatorsInLine[:index] + \
                     token + reservedWordsSeparataorsOperatorsInLine[index + 1:]
-
-        # print(reservedWordsSeparataorsOperatorsInLine)
-
-        # strings
-        # identifiersAndConstantsNoStrings
-        # reservedWordsSeparataorsOperatorsInLine
 
         while(len(strings) > 0 or len(identifiersAndConstants) > 0 or len(reservedWordsSeparataorsOperatorsInLine) > 0):
             if (len(strings) > 0):
