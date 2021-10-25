@@ -38,17 +38,3 @@ class SymbolTable:
 
     def getContent(self):
         return self.__hashTable
-
-
-if __name__ == "__main__":
-    symTab = SymbolTable()
-
-    print(symTab.add(1))
-    print(symTab.add('abc'))
-    print(symTab.add('anaaremere'))
-    print(symTab.add(2))
-    print(symTab.add(1))
-    print(symTab.add('abc'))
-    print(symTab.add('acb'))
-    print(symTab.add('bca'))
-    print(symTab.getContent())

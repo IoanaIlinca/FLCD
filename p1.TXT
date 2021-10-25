@@ -1,4 +1,4 @@
-<!-- The maximum of  3 numbers -->
+<!-- The maximum of 3 numbers -->
 
 **
 	read(numberOne)
