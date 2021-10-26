@@ -179,12 +179,12 @@ for fileName in files:
 
             if (minIndex == indexFirstString):
                 index = st.add(strings[0])
-                pif.append([strings[0], index])
+                pif.append([strings[0], index[0]])
                 line = line.replace(strings[0], "", 1)
                 strings.pop(0)
             if (minIndex == indexFirstIdConst):
-                ndex = st.add(identifiersAndConstants[0])
-                pif.append([identifiersAndConstants[0], index])
+                index = st.add(identifiersAndConstants[0])
+                pif.append([identifiersAndConstants[0], index[0]])
 
                 line = line.replace(identifiersAndConstants[0], "", 1)
                 identifiersAndConstants.pop(0)
