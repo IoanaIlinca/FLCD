@@ -1,5 +1,6 @@
 
 from SymbolTable import SymbolTable
+from FAanalyzer import FAanalyzer
 import re
 import copy
 
@@ -115,6 +116,10 @@ for fileName in files:
         errors = []
         copyIdentifiersAndConstants = copy.deepcopy(identifiersAndConstants)
 
+        faId = FAanalyzer()
+        faId.readFile("FAidentifier.txt")
+        faInt = FAanalyzer()
+        faInt.readFile("FAintegerConstant.txt")
         for token in copyIdentifiersAndConstants:
             if token.find('\'') != -1:
                 if (token[0] != '\'' or token[-1] != '\''):
@@ -125,8 +130,9 @@ for fileName in files:
                         errors.append(token)
                         identifiersAndConstants.remove(token)
             else:
-                result = re.search("[^a-zA-z0-9_]", token)
-                if result:
+                isIdentifier = faId.check(token)
+                isIntConstant = faInt.check(token)
+                if not isIdentifier and not isIntConstant:
                     errors.append(token)
                     identifiersAndConstants.remove(token)
 
