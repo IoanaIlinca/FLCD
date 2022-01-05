@@ -1,0 +1,44 @@
+
+%{
+%{
+#include <math.h>
+int lines = 0;
+%}
+%option noyywrap
+
+DIGIT 		[0-9]
+STRING		["]([a-zA-Z])*["]
+NUMBER		[1-9][0-9]*|0
+CONST		{STRING}|{NUMBER}
+IDENTIFIER 		[a-zA-Z][a-zA-Z0-9]{0,7}
+
+%%
+
+
+{DIGIT}	            {printf( "Digit: %s\n", yytext ); return DIGIT;}
+{STRING}	        {printf( "String: %s\n", yytext ); return STRING;}
+{NUMBER}	        {printf( "Number: %s\n", yytext ); return NUMBER;}
+{CONST}	            {printf( "Constant: %s\n", yytext ); return CONST;}
+{IDENTIFIER}	    {printf( "Identifier: %s\n", yytext ); return IDENTIFIER;}
+
+"(" | ")" |  "[" | "]" | "{" | "}" | " " | "\t" | "\n" | "+" | "-" | "*" | "/" | "=" | "%" | "=>" | "<" | ">" | "<=" | ">=" | "==" | "===" | "!=" | "!==" | "!" | "**" | "&&" | |"|" | "\\" printf( "An operator: %s\n", yytext );
+
+"<!--".*"-->" 		/* eat up comments */
+
+[ \t\n]+ 		/* eat up whitespace */
+
+[0-9][a-zA-Z0-9]{0,7}	{printf("Illegal identifier at line %d\n", lines); return -1;}
+
+.	{printf("Illegal symbol at line\n"); return -1;}
+%%
+main( argc, argv )
+int argc;
+char **argv;
+{
+    ++argv, --argc; /* skip over program name */
+    if ( argc > 0 )
+    yyin = fopen( argv[0], "r" );
+    else
+     yyin = stdin;
+    yylex();
+}
